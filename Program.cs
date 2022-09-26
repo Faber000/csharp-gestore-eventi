@@ -22,18 +22,25 @@ evento.PrenotaPosti(prenotazioni);
 
 Console.WriteLine("sono stati prenotati " + evento.PostiPrenotati + " posti");
 
-do
-{
-    Console.WriteLine("vuoi disdire dei posti? (si/no)");
-    risposta = Console.ReadLine();
+Console.WriteLine("vuoi disdire dei posti? (si/no)");
+risposta = Console.ReadLine();
 
+while(risposta == "si")
+{
     Console.WriteLine("quanti posti vuoi disdire?");
     int postiDisdetti = Convert.ToInt32(Console.ReadLine());
     evento.DisdiciPosti(postiDisdetti);
 
     Console.WriteLine("sono stati prenotati " + evento.PostiPrenotati + " posti");
 
-} while (risposta == "si");
+    Console.WriteLine("vuoi disdire dei posti? (si/no)");
+    risposta = Console.ReadLine();
+
+}
+
+
+
+
 
 
 
