@@ -43,7 +43,7 @@
         }
     }
 
-    public string ToString()
+    public virtual string ToString()
     {
         string data = Data.ToString("dd/MM/yyyy");
 

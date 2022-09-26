@@ -33,27 +33,27 @@ switch (risposta)
 
 void CreaEvento()
 {
-    // ottengo il nome del nuovo evento
+    // Ottengo il nome del nuovo evento
     Console.WriteLine("Inserisci il titolo del nuovo evento");
     nomeEvento = Console.ReadLine();
 
-    // ottengo la data dell'evento
+    // Ottengo la data dell'evento
     Console.WriteLine("Inserisci la data dell'evento");
     dataStringa = Console.ReadLine();
     dataFormattata = Convert.ToDateTime(dataStringa);
 
-    // ottengo la capienza massima dell'evento
+    // Ottengo la capienza massima dell'evento
     Console.WriteLine("Inserisci la capienza massima");
     capienzaMassima = Convert.ToInt32(Console.ReadLine());
 
-    // istanzio il nuovo evento
+    // Istanzio il nuovo evento
     Evento evento = new Evento(nomeEvento, dataFormattata, capienzaMassima);
 
-    // ottengo il numero di prenotazioni
+    // Ottengo il numero di prenotazioni
     Console.WriteLine("Quante prenotazioni vuoi effettuare?");
     int numeroPrenotazioni = Convert.ToInt32(Console.ReadLine());
 
-    // effettuo la prenotazione
+    // Effettuo la prenotazione
     evento.PrenotaPosti(numeroPrenotazioni);
 
     Console.WriteLine("sono stati prenotati " + evento.PostiPrenotati + " posti");
@@ -63,11 +63,11 @@ void CreaEvento()
 
     while (risposta == "si")
     {
-        // ottengo il numero di posti da disdire
+        // Ottengo il numero di posti da disdire
         Console.WriteLine("quanti posti vuoi disdire?");
         int postiDisdetti = Convert.ToInt32(Console.ReadLine());
 
-        // disdico i posti
+        // Disdico i posti
         evento.DisdiciPosti(postiDisdetti);
 
         Console.WriteLine("sono stati prenotati " + evento.PostiPrenotati + " posti");
@@ -82,39 +82,39 @@ void CreaEvento()
 
 void CreaProgrammaEventi()
 {
-    // ottengo il nome del programma eventi
+    // Ottengo il nome del programma eventi
     Console.WriteLine("Inserisci il nome del tuo programma eventi");
     string nomeProgramma = Console.ReadLine();
 
-    // istanzio il nuovo programma
+    // Istanzio il nuovo programma
     ProgrammaEventi programmaEventi = new ProgrammaEventi(nomeProgramma);
 
-    // ottengo il numero degli eventi
+    // Ottengo il numero degli eventi
     Console.WriteLine("Quanti eventi vuoi inserire?");
     int numeroEventi = Convert.ToInt32(Console.ReadLine());
 
-    // ciclo per ogni evento
+    // Ciclo per ogni evento
     for (int i = 0; i < numeroEventi; i++)
     {
-        // ottengo il nome del singolo evento
+        // Ottengo il nome del singolo evento
         Console.WriteLine("Inserisci il nome del " + (i + 1) + "° evento: ");
         nomeEvento = Console.ReadLine();
 
-        // ottengo la data del singolo evento
+        // Ottengo la data del singolo evento
         Console.WriteLine("Inserisci la data dell'evento (dd/MM/yyyy)");
         dataStringa = Console.ReadLine();
         dataFormattata = Convert.ToDateTime(dataStringa);
 
-        // ottengo la capienza del singolo evento
+        // Ottengo la capienza del singolo evento
         Console.WriteLine("Inserisci il numero di posti totali");
         capienzaMassima = Convert.ToInt32(Console.ReadLine());
 
         try
         {
-            // istanzio il nuovo evento
+            // Istanzio il nuovo evento
             Evento nuovoEvento = new Evento(nomeEvento, dataFormattata, capienzaMassima);
 
-            // aggiungo l'evento al programma
+            // Aggiungo l'evento al programma
             programmaEventi.AggiungiEvento(nuovoEvento);
         }
         catch (ArgumentNullException)
@@ -131,17 +131,44 @@ void CreaProgrammaEventi()
         }
     }
 
-    // stampo il programma creato
+    // Ottengo il nome della conferenza
+    Console.WriteLine("Inserisci il nome della conferenza");
+    string nomeConferenza = Console.ReadLine();
+
+    // Ottengo la data della conferenza
+    Console.WriteLine("Inserisci la data della conferenza(dd/MM/yyyy)");
+    dataStringa = Console.ReadLine();
+    dataFormattata = Convert.ToDateTime(dataStringa);
+
+    // Ottengo la capienza della conferenza
+    Console.WriteLine("Inserisci il numero di posti totali");
+    capienzaMassima = Convert.ToInt32(Console.ReadLine());
+
+    // Ottengo il nome del relatore
+    Console.WriteLine("Inserisci il nome del relatore");
+    string nomeRelatore = Console.ReadLine();
+
+    // Ottengo il prezzo della conferenza
+    Console.WriteLine("Inserisci il prezzo della conferenza");
+    double prezzoConferenza = Convert.ToInt32(Console.ReadLine());
+
+    // istanzio la nuova conferenza
+    Conferenza nuovaConferenza = new Conferenza(nomeConferenza, dataFormattata, capienzaMassima, nomeRelatore, prezzoConferenza);
+
+    // Aggiungo la conferenza al programma
+    programmaEventi.AggiungiEvento(nuovaConferenza);
+
+    // Stampo il programma creato
     Console.WriteLine("Il numero di eventi nel programma è " + programmaEventi.NumeroEventi());
     Console.WriteLine("Ecco il tuo programma eventi: ");
     Console.WriteLine(programmaEventi.ToString());
 
-    // ottengo la data da ricercare
+    // Ottengo la data da ricercare
     Console.WriteLine("inserisci una data per scoprire che eventi ci saranno (dd/MM/yyyy)");
     dataStringa = Console.ReadLine();
     dataFormattata = Convert.ToDateTime(dataStringa);
 
-    // stampo gli eventi relativi alla data
+    // Stampo gli eventi relativi alla data
     Console.WriteLine("Ecco gli eventi relativi alla data che hai cercato: ");
     ProgrammaEventi.StampaListaEventi(programmaEventi.EventiPerData(dataFormattata));
 }
