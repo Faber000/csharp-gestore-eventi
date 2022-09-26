@@ -1,5 +1,7 @@
 ﻿using System;
 
+string risposta;
+
 Console.WriteLine("inserisci il titolo del nuovo evento");
 string titolo = Console.ReadLine();
 
@@ -20,18 +22,20 @@ evento.PrenotaPosti(prenotazioni);
 
 Console.WriteLine("sono stati prenotati " + evento.PostiPrenotati + " posti");
 
-Console.WriteLine("vuoi disdire dei posti? (si/no)");
-string risposta = Console.ReadLine();
-
-if (risposta == "si")
+do
 {
+    Console.WriteLine("vuoi disdire dei posti? (si/no)");
+    risposta = Console.ReadLine();
+
     Console.WriteLine("quanti posti vuoi disdire?");
     int postiDisdetti = Convert.ToInt32(Console.ReadLine());
-
     evento.DisdiciPosti(postiDisdetti);
-}
 
-Console.WriteLine("sono stati prenotati "+ evento.PostiPrenotati + " posti");
+    Console.WriteLine("sono stati prenotati " + evento.PostiPrenotati + " posti");
+
+} while (risposta == "si");
+
+
 
 
 
