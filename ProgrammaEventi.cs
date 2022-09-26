@@ -53,7 +53,7 @@
 
         foreach(Evento evento in ListaEventi)
         {
-            stringa = evento.ToString();
+            stringa = stringa + evento.ToString() + "\n\r";
         }
         return stringa;
     }
