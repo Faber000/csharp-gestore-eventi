@@ -33,7 +33,7 @@
     {
         DateTime thisDay = DateTime.Today;
 
-        if (posti < PostiPrenotati & DateTime.Compare(thisDay, Data) < 0)
+        if (posti <= PostiPrenotati & DateTime.Compare(thisDay, Data) < 0)
         {
             PostiPrenotati = PostiPrenotati - posti;
         }
@@ -62,6 +62,11 @@
     public int GetCapienzaMassima()
     {
         return CapienzaMassima;
+    }
+
+    public int GetPostiDisponibili()
+    {
+        return CapienzaMassima - PostiPrenotati;
     }
 
     public void SetTitolo(string titolo)

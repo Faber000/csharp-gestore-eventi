@@ -33,6 +33,8 @@ while(risposta == "si")
 
     Console.WriteLine("sono stati prenotati " + evento.PostiPrenotati + " posti");
 
+    Console.WriteLine("i posti disponibili sono: " + evento.GetPostiDisponibili());
+
     Console.WriteLine("vuoi disdire dei posti? (si/no)");
     risposta = Console.ReadLine();
 
