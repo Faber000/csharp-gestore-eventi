@@ -67,12 +67,27 @@ for(int i = 0; i < numeroEventi; i++)
     // ottengo la capienza del singolo evento
     Console.WriteLine("Inserisci il numero di posti totali");
     int capienzaMassima = Convert.ToInt32(Console.ReadLine());
+    
+    try
+    {
+        // istanzio il nuovo evento
+        Evento nuovoEvento = new Evento(nomeEvento, dataFormattata, capienzaMassima);
 
-    // istanzio il nuovo evento
-    Evento nuovoEvento = new Evento(nomeEvento, dataFormattata, capienzaMassima);
-
-    // aggiungo l'evento al programma
-    programmaEventi.AggiungiEvento(nuovoEvento);
+        // aggiungo l'evento al programma
+        programmaEventi.AggiungiEvento(nuovoEvento);
+    }
+    catch (ArgumentNullException)
+    {
+        Console.WriteLine("Argomento nullo");
+    }
+    catch (ArgumentException)
+    {
+        Console.WriteLine("Argomento non valido");
+    }
+    catch (Exception)
+    {
+        Console.WriteLine("Si è verificato un errore");
+    }
 }
 
 // stampo il programma creato

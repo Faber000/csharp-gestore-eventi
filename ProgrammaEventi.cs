@@ -17,6 +17,7 @@
     public List<Evento> EventiPerData(DateTime data)
     {
         List<Evento> ListaPerData = new List<Evento>();
+
         foreach(Evento evento in ListaEventi)
         {
             if(DateTime.Compare(evento.GetData(), data) == 0)
@@ -49,6 +50,7 @@
     public string ToString()
     {
         string stringa = Titolo + "\n\r";
+
         foreach(Evento evento in ListaEventi)
         {
             stringa = evento.ToString();
