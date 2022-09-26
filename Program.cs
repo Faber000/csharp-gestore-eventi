@@ -152,11 +152,26 @@ void CreaProgrammaEventi()
     Console.WriteLine("Inserisci il prezzo della conferenza");
     double prezzoConferenza = Convert.ToInt32(Console.ReadLine());
 
-    // istanzio la nuova conferenza
-    Conferenza nuovaConferenza = new Conferenza(nomeConferenza, dataFormattata, capienzaMassima, nomeRelatore, prezzoConferenza);
+    try
+    {
+        // istanzio la nuova conferenza
+        Conferenza nuovaConferenza = new Conferenza(nomeConferenza, dataFormattata, capienzaMassima, nomeRelatore, prezzoConferenza);
 
-    // Aggiungo la conferenza al programma
-    programmaEventi.AggiungiEvento(nuovaConferenza);
+        // Aggiungo la conferenza al programma
+        programmaEventi.AggiungiEvento(nuovaConferenza);
+    }
+    catch (ArgumentNullException)
+    {
+        Console.WriteLine("Argomento nullo");
+    }
+    catch (ArgumentException)
+    {
+        Console.WriteLine("Argomento non valido");
+    }
+    catch (Exception)
+    {
+        Console.WriteLine("Si è verificato un errore");
+    }
 
     // Stampo il programma creato
     Console.WriteLine("Il numero di eventi nel programma è " + programmaEventi.NumeroEventi());
