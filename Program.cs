@@ -2,7 +2,7 @@
 
 string risposta;
 
-Console.WriteLine("inserisci il titolo del nuovo evento");
+/*Console.WriteLine("inserisci il titolo del nuovo evento");
 string titolo = Console.ReadLine();
 
 Console.WriteLine("inserisci la data dell'evento");
@@ -39,6 +39,30 @@ while(risposta == "si")
     risposta = Console.ReadLine();
 
 }
+*/
+ProgrammaEventi programma = new ProgrammaEventi("titolo");
+
+Console.WriteLine("quanti eventi vuoi inserire?");
+int num = Convert.ToInt32(Console.ReadLine());  
+
+for(int i = 0; i < num; i++)
+{
+    Console.WriteLine("inserisci il titolo del nuovo evento");
+    string titolo = Console.ReadLine();
+
+    Console.WriteLine("inserisci la data dell'evento");
+    string data = Console.ReadLine();
+    DateTime dataEvento = Convert.ToDateTime(data);
+
+    Console.WriteLine("inserisci la capienza massima");
+    int capienza = Convert.ToInt32(Console.ReadLine());
+
+    Evento evento = new Evento(titolo, dataEvento, capienza);
+
+    programma.AggiungiEvento(evento);
+}
+
+Console.WriteLine(programma.ToString());
 
 
 
