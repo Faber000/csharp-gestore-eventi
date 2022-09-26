@@ -134,7 +134,6 @@ void CreaProgrammaEventi()
     // stampo il programma creato
     Console.WriteLine("Il numero di eventi nel programma è " + programmaEventi.NumeroEventi());
     Console.WriteLine("Ecco il tuo programma eventi: ");
-    Console.WriteLine(programmaEventi.Titolo);
     Console.WriteLine(programmaEventi.ToString());
 
     // ottengo la data da ricercare
