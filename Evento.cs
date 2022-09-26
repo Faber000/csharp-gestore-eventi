@@ -49,6 +49,7 @@
 
         return data + " - " + Titolo;
     }
+
     public string GetTitolo()
     {
         return Titolo;

@@ -7,7 +7,7 @@ int capienzaMassima;
 
 // Menu 
 Console.WriteLine("Inserisci 1 per creare un singolo evento");
-Console.WriteLine("Inserisci 1 per creare un programma di eventi");
+Console.WriteLine("Inserisci 2 per creare un programma di eventi");
 risposta = Console.ReadLine();
 
 switch (risposta)
