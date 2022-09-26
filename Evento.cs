@@ -47,7 +47,7 @@
     {
         string data = Data.ToString("dd/MM/yyyy");
 
-        return data + "-" + Titolo;
+        return data + " - " + Titolo;
     }
     public string GetTitolo()
     {

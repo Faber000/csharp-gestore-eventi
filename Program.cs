@@ -1,8 +1,8 @@
 ﻿using System;
-
+/*
 string risposta;
 
-/*Console.WriteLine("inserisci il titolo del nuovo evento");
+Console.WriteLine("inserisci il titolo del nuovo evento");
 string titolo = Console.ReadLine();
 
 Console.WriteLine("inserisci la data dell'evento");
@@ -40,29 +40,56 @@ while(risposta == "si")
 
 }
 */
-ProgrammaEventi programma = new ProgrammaEventi("titolo");
 
-Console.WriteLine("quanti eventi vuoi inserire?");
-int num = Convert.ToInt32(Console.ReadLine());  
+// ottengo il nome del programma eventi
+Console.WriteLine("Inserisci il nome del tuo programma eventi");
+string nomeProgramma = Console.ReadLine();
 
-for(int i = 0; i < num; i++)
+// istanzio il nuovo programma
+ProgrammaEventi programmaEventi = new ProgrammaEventi(nomeProgramma);
+
+// ottengo il numero degli eventi
+Console.WriteLine("Quanti eventi vuoi inserire?");
+int numeroEventi = Convert.ToInt32(Console.ReadLine());  
+
+// ciclo per ogni evento
+for(int i = 0; i < numeroEventi; i++)
 {
-    Console.WriteLine("inserisci il titolo del nuovo evento");
-    string titolo = Console.ReadLine();
+    // ottengo il nome del singolo evento
+    Console.WriteLine("Inserisci il nome del "+ (i+1) +"° evento: ");
+    string nomeEvento = Console.ReadLine();
 
-    Console.WriteLine("inserisci la data dell'evento");
-    string data = Console.ReadLine();
-    DateTime dataEvento = Convert.ToDateTime(data);
+    // ottengo la data del singolo evento
+    Console.WriteLine("Inserisci la data dell'evento (dd/MM/yyyy)");
+    string dataStringa = Console.ReadLine();
+    DateTime dataFormattata = Convert.ToDateTime(dataStringa);
 
-    Console.WriteLine("inserisci la capienza massima");
-    int capienza = Convert.ToInt32(Console.ReadLine());
+    // ottengo la capienza del singolo evento
+    Console.WriteLine("Inserisci il numero di posti totali");
+    int capienzaMassima = Convert.ToInt32(Console.ReadLine());
 
-    Evento evento = new Evento(titolo, dataEvento, capienza);
+    // istanzio il nuovo evento
+    Evento nuovoEvento = new Evento(nomeEvento, dataFormattata, capienzaMassima);
 
-    programma.AggiungiEvento(evento);
+    // aggiungo l'evento al programma
+    programmaEventi.AggiungiEvento(nuovoEvento);
 }
 
-Console.WriteLine(programma.ToString());
+// stampo il programma creato
+Console.WriteLine("Il numero di eventi nel programma è " + programmaEventi.NumeroEventi());
+Console.WriteLine("Ecco il tuo programma eventi: ");
+Console.WriteLine(programmaEventi.Titolo);
+Console.WriteLine(programmaEventi.ToString());
+
+// ottengo la data da ricercare
+Console.WriteLine("inserisci una data per scoprire che eventi ci saranno (dd/MM/yyyy");
+string data = Console.ReadLine();
+DateTime dataEvento = Convert.ToDateTime(data);
+
+// stampo gli eventi relativi alla data
+Console.WriteLine("Ecco gli eventi relativi alla data che hai cercato: ");
+ProgrammaEventi.StampaListaEventi(programmaEventi.EventiPerData(dataEvento));
+
 
 
 
